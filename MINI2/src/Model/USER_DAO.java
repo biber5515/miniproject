@@ -47,7 +47,7 @@ public void close() {
 	
 }
 // db에 회원가입 정보 넣기
-public boolean insertStd(String ID, int PASSWORD, String NAME) {
+public boolean insertId(String ID, int PASSWORD, String NAME) {
 
 	boolean check = false;
 	try {
@@ -80,7 +80,7 @@ public boolean insertStd(String ID, int PASSWORD, String NAME) {
 
 }
 //입력한 로그인 하기 위해 아이디의 비번 가져오기
-public USER_VO selectOneID(String name) {
+public USER_VO selectOneID(String ID) {
 
 	USER_VO vo = null;
 	try {
@@ -90,7 +90,7 @@ public USER_VO selectOneID(String name) {
 
 		pst = conn.prepareStatement(sql);
 
-		pst.setString(1, name);
+		pst.setString(1, ID);
 
 		rs = pst.executeQuery();
 

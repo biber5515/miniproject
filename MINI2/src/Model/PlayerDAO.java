@@ -100,7 +100,35 @@ public class PlayerDAO {
 
 		return selectedHitter;
 	}
+//플레이어 이미 등록이 되어있으면 다시 등록을 하지 않기위해 확인하기위한 쿼리
+	public boolean checkPlayer(String ID) {
+		// 선택할 타자 이름을 입력받음.
+		PlayerDTO selected = null;
+		boolean check=false;
+		try {
+			connect();
 
+			String query = "select PLAYER_NAME,Abillity from Player where ID=?";
+
+			pst = conn.prepareStatement(query);
+			pst.setString(1, ID);
+
+			rs = pst.executeQuery();
+			
+			if (rs.next()) {
+				check=true;
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return check;
+	}
+	
 	public PlayerDTO selectOneHitter(String hitterName) {
 		// 선택할 타자 이름을 입력받음.
 		PlayerDTO selected = null;
@@ -116,7 +144,7 @@ public class PlayerDAO {
 			rs = pst.executeQuery();
 
 			if (rs.next()) {
-				String playerName = rs.getString("NAME");
+				String playerName = rs.getString("PLAYER_NAME");
 				int playerAbility = rs.getInt("Abillity");
 
 				selected = new PlayerDTO(playerName, playerAbility);

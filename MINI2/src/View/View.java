@@ -41,17 +41,19 @@ public class View {
 				String id = sc.next();
 				System.out.print("비밀번호 입력 : ");
 				int pw = sc.nextInt();
-
-				USER_VO check = udao.selectOneID(id);
 				
+				USER_VO check = udao.selectOneID(id);
 				if (id.equals(check.getID()) && pw == check.getPASSWORD()) {
-					for (int i = 0; i < 3; i++) {
-						System.out.println("[선수 등록]");
-						System.out.print("선수 이름 입력 : ");
-						String pName = sc.next();
-						System.out.println("능력치 >> ");
-						int pAbility = rd.nextInt(100) + 1;
-						boolean playerin = pdao.enrollPlayer(pName, pAbility, id);
+					if(pdao.checkPlayer(id)==false) {
+						for (int i = 0; i < 3; i++) {
+							System.out.println("[선수 등록]");
+							System.out.print("선수 이름 입력 : ");
+							String pName = sc.next();
+							System.out.print("능력치 >> ");
+							int pAbility = rd.nextInt(100) + 1;
+							System.out.print(pAbility+"\n");
+							boolean playerin = pdao.enrollPlayer(pName, pAbility, id);
+						}
 					}
 					System.out.println("[타자 목록]");
 					ArrayList<PlayerDTO> selectH = pdao.selectAllHitter(id);
@@ -63,7 +65,7 @@ public class View {
 					int score = 0;
 					int victory=0;
 					while (true) {
-						System.out.println("타자이름을 입력해주세요");
+						System.out.print("투입될 타자이름을 입력해주세요:");
 						String setname = sc.next();
 						PlayerDTO dto = pdao.selectOneHitter(setname);
 
@@ -98,7 +100,7 @@ public class View {
 								break;
 							}
 						}
-						if(victory%2==0) {
+						if(victory==2) {
 							System.out.println("[선수 등록]");
 							System.out.print("선수 이름 입력 : ");
 							String pName = sc.next();

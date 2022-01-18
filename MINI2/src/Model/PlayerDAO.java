@@ -19,9 +19,7 @@ public class PlayerDAO {
 	public void connect() {
 		// DB 동적 로딩
 		try {
-			// 1. Oracle JDBC driver 동적 로딩 (동적로딩 : 실행할 때 가지고 오겠다!)
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			// 2. 사용할 계정 선택, DB 연결 객체 생성
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PWD);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,7 +43,7 @@ public class PlayerDAO {
 	}
 	// JDBC
 
-	public boolean enrollPlayer(String playerName, int playerAbility,String ID) {
+	public boolean enrollPlayer(String playerName, int playerAbility, String ID) {
 		// 선수 등록
 		// playerAbility는 컨트롤러에서 랜덤값으로 넘겨주셈!
 

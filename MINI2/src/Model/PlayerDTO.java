@@ -6,10 +6,6 @@ public class PlayerDTO {
 	private int playerAbility;
 	private String ID;
 	
-	public PlayerDTO() {
-		
-	}
-	
 	public PlayerDTO(String playerName, int playerAbility) {
 		this.playerName = playerName;
 		this.playerAbility = playerAbility;
@@ -33,6 +29,15 @@ public class PlayerDTO {
 	public void setPlayerAbility(int playerAbility) {
 		this.playerAbility = playerAbility;
 	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+	
 	
 	
 

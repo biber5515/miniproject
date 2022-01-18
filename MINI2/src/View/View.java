@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 import Model.PlayerDAO;
 import Model.PlayerDTO;
+import Model.StudentVO;
 import Model.USER_DAO;
+import Model.USER_VO;
 
 public class View {
 	public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class View {
 		
 		while(true) {
 			System.out.println("[BaseBall Game]");
-			System.out.print("1.회원가입 2.로그인 >> ");
+			System.out.print("1.회원가입 2.로그인 3.랭킹확인 4.종료 >> ");
 			int s = sc.nextInt();
 			if(s==1) {
 				System.out.println("[회원가입]");
@@ -29,7 +31,7 @@ public class View {
 				System.out.print("이름 입력 : ");
 				String user = sc.next();
 				//입력 받은 유저정보 db에 insert
-				boolean userin = udao.insertStd(id, pw, user);
+				boolean userin = udao.insertId(id,pw,user);
 			}else if(s==2) {
 				System.out.print("아이디 입력 : ");
 				String id = sc.next();
@@ -60,6 +62,28 @@ public class View {
 						System.out.println("[홈런]");
 					}
 				}
+			}else if(s==3) {
+				ArrayList<USER_VO> al= udao.rankCheck();
+				System.out.println("최고점수 랭킹 10위");
+				
+				for(USER_VO vo:al) {
+					System.out.println("ID:"+vo.getID()+"\t Name:"+vo.getNAME()+"\t Score:"+vo.getSCORE());
+				}
+				System.out.print("==========================================");
+				System.out.print("ID를 입력하시면 입력한 아이디의 최고점수가 출력됩니다:");
+				String setId=sc.next();
+				USER_VO v=udao.selectRank(setId);
+				if(v==null) {
+					System.out.println("없는 아이디입니다");
+				}else {
+				System.out.println("=================");
+				System.out.println("ID:"+v.getID()+"\t Name:"+v.getNAME()+"\t Score:"+v.getSCORE());
+				}			
+			}else if(s==4) {
+				System.out.println("종료되었습니다");
+				break;
+			}else {
+				System.out.println("잘못 입력하였습니다");
 			}
 		}
 		

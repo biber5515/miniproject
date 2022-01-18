@@ -51,7 +51,7 @@ public class PlayerDAO {
 		try {
 			connect();
 			// 대괄호로 감싼 부분 나중에 맞는 테이블명으로 수정.
-			String query = "insert into player(PLAYER_NAME,Abillty,ID) values (?, ?,?)";
+			String query = "insert into player(PLAYER_NAME,Abillity,ID) values (?, ?,?)";
 			pst = conn.prepareStatement(query);
 
 			pst.setString(1, playerName);

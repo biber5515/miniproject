@@ -36,8 +36,9 @@ public class MainPage {
 						int totalScore = 0;
 						int victory = 0;
 						String continu="";
+						mco.Intro(); 
 						while (true) {
-//							mco.Intro(); 음악을 아직 않넣음
+							
 							PlayerDTO Hitter = pco.inputHitters(id, pdao);
 							PlayerDTO pitcher = pco.getPitcherList(id, pdao);
 							if (pitcher == null) {
@@ -50,15 +51,15 @@ public class MainPage {
 							if (pitcherAbil > Hitter.getPlayerAbility()
 									|| Hitter.getPlayerAbility() - pitcherAbil <= 10) {
 								strike++;
-//								mco.StrikePlay();음악을 아직 안넣음
+								mco.StrikePlay();
 								pco.handleStrike(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) {
 								score++;
-//								mco.HitPlay();음악을 아직 안넣음
+								mco.HitPlay();
 								pco.handleSafety(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) {
 								score += 2;
-//								mco.HomeRunPlay();음악을 아직 안넣음
+								mco.HomeRunPlay();
 								pco.handleHomerun(Hitter, pitcherAbil, strike, score);
 							}
 							if (strike >= 3) {

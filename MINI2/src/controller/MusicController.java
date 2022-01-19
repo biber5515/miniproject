@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import Model.Music_VO;
 
 import javazoom.jl.player.MP3Player;
 
@@ -17,17 +16,17 @@ public class MusicController {
 
 	
 	public static void Intro() {
-		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Intro");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\java\\MINI2\\src\\Intro");
 	}
 
 	public static void StrikePlay() {
-		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Strike");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\java\\MINI2\\src\\Strike");
 	}
 	public static void HitPlay() {
-		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Hit");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\java\\MINI2\\src\\Hit");
 	}
 	public static void HomeRunPlay() {
-		mp3.play( "C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Homerun");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\java\\MINI2\\src\\HomeRun");
 
 	}
 	public static void stop() {

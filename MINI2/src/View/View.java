@@ -1,14 +1,10 @@
 package View;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
-import Model.PlayerDAO;
 import Model.PlayerDTO;
-import Model.USER_DAO;
 import Model.USER_VO;
-import controller.PlayerController;
+
 
 public class View {
 	

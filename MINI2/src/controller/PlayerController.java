@@ -9,6 +9,7 @@ public class PlayerController {
 	// 모델 - 뷰를 왔다갔다해야함
 	// 여기있는 메서드를 실행
 	// 여기서 실행되는 메서드는 모델에 영향을 줌
+	
 	View view = new View();
 	PlayerDAO playerDao;
 	PlayerController playerController = new PlayerController(playerDao);
@@ -96,6 +97,4 @@ public class PlayerController {
 		view.homerunResult(player, pitcherAbil);
 		view.showStrike(strike, score);
 	}
-
-
 }

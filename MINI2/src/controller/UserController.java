@@ -58,4 +58,18 @@ public class UserController {
 			udao.updateScore(id, totalscore);
 		}
 	}
+		
+	public int Start() {
+		int s=view.StartBaseBall();
+		return s;
+	}
+
+	public void finish() {
+		// TODO Auto-generated method stub
+		view.finish();	
+	}
+	public void inputError() {
+		// TODO Auto-generated method stub
+		view.inputError();
+	}
 }

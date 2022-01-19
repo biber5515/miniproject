@@ -20,10 +20,12 @@ public class View {
 		PlayerController playerController = new PlayerController(pdao);
 
 		while (true) {
+			// View.StartBaseBall();
 			System.out.println("[BaseBall Game]");
 			System.out.print("1.회원가입 2.로그인 3.랭크확인 4.게임종료 >> ");
 			int s = sc.nextInt();
-			if (s == 1) {
+			if (s == 1) { // Controller
+				// View.JoinMethod();
 				System.out.println("[회원가입]");
 				System.out.print("아이디 입력 : ");
 				String id = sc.next();

@@ -99,6 +99,7 @@ public class MainPage {
 				uco.rankCheck();
 			} else if (s == 4) {
 				uco.finish();
+				break;
 			} else {
 				uco.inputError();
 			}

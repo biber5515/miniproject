@@ -16,6 +16,7 @@ public class UserController {
 	}
 	
 	public void handleJoin () {
+		view.printJoin();
 		String id = view.inputId();
 		int pw = view.inputPwd();
 		String user = view.inputName();
@@ -66,7 +67,7 @@ public class UserController {
 
 	public void finish() {
 		// TODO Auto-generated method stub
-		view.finish();	
+		view.finish();
 	}
 	public void inputError() {
 		// TODO Auto-generated method stub

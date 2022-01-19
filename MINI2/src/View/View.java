@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Model.PlayerDTO;
 import Model.USER_VO;
+import utils.AsciiArt;
 
 
 public class View {
@@ -12,15 +13,22 @@ public class View {
 	
 	// 게임 시작
 	public int StartBaseBall () {
-		System.out.println("[BaseBall Game]");
+		AsciiArt.printMain();
 		System.out.print("1.회원가입 2.로그인 3.랭크확인 4.게임종료 >> ");
 		int s = sc.nextInt();
 		return s;
 	}
 	
+	public void printJoin() {
+		System.out.println("[회원가입]");
+	}
+	
+	public void printLogin() {
+		System.out.println("로그인");
+	}
+	
 	// 회원가입 출력, 및 ID 입력
 	public String inputId () {
-		System.out.println("[회원가입]");
 		System.out.print("아이디 입력 : ");
 		String id = sc.next();
 		return id;
@@ -84,9 +92,7 @@ public class View {
 	}
 	
 	public void strikeResult (PlayerDTO dto, int pitcherAbil) {
-		System.out.println("===============================");
-		System.out.println("스트라이크!!!!");
-		System.out.println("===============================");
+		AsciiArt.printStrike();
 		System.out.println("타자 능력치:" + dto.getPlayerAbility());
 		System.out.println("투수 능력치:" + pitcherAbil);
 	}
@@ -96,22 +102,18 @@ public class View {
 	}
 	
 	public void safetyResult (PlayerDTO dto, int pitcherAbil) {
-		System.out.println("===============================");
-		System.out.println("안타");
-		System.out.println("===============================");
+		AsciiArt.printSafety();
 		System.out.println("타자 능력치:" + dto.getPlayerAbility());
 		System.out.println("투수 능력치:" + pitcherAbil);
 	}
 	
 	public void homerunResult (PlayerDTO dto, int pitcherAbil) {
-		System.out.println("===============================");
-		System.out.println("홈런");
-		System.out.println("===============================");
+		AsciiArt.printHomerun();
 		System.out.println("타자 능력치:" + dto.getPlayerAbility());
 		System.out.println("투수 능력치:" + pitcherAbil);
 	}
 	public void defeatPrint() {
-		System.out.println("패배하였습니다");
+		AsciiArt.printDefeat();
 	}
 	public void victoryPrint() {
 		System.out.println("승리하였습니다");
@@ -148,7 +150,7 @@ public class View {
 		System.out.println("ID:" + v.getID() + "\t Name:" + v.getNAME() + "\t Score:" + v.getSCORE());
 	}
 	public void finish() {
-		System.out.println("종료되었습니다");
+		AsciiArt.printBye();
 	}
 	public void inputError() {
 		System.out.println("잘못 입력하였습니다");

@@ -33,6 +33,7 @@ public class View {
 				boolean userin = udao.insertId(id, pw, user);
 				if(userin==true) {
 					System.out.println("회원가입이 성공했습니다");
+					udao.updateScore(id, 0);
 				}else {
 					System.out.println("회원가입이 실패했습니다");
 				}
@@ -94,6 +95,7 @@ public class View {
 							if (continu.equals("N") || continu.equals("n")) {
 								break;
 							}
+							strike=0;
 						} else if (score >= 10) {
 							System.out.println("승리하였습니다");
 							if(score>udao.currentScore(id)) {
@@ -105,6 +107,7 @@ public class View {
 							if (continu.equals("N") || continu.equals("n")) {
 								break;
 							}
+							strike=0;
 						}
 						if(victory==2) {
 							System.out.println("[선수 등록]");

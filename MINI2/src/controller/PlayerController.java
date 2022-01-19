@@ -12,10 +12,12 @@ public class PlayerController {
 	
 	View view = new View();
 	PlayerDAO playerDao;
-	PlayerController playerController = new PlayerController(playerDao);
 	
 	Scanner sc = new Scanner(System.in);
 	Random rand = new Random();
+	public PlayerController() {
+		
+	}
 
 	public PlayerController(PlayerDAO playerDao) {
 		this.playerDao = playerDao;
@@ -49,7 +51,7 @@ public class PlayerController {
 		return pickedPlayer;
 	}
 	
-	public void enrollPlayers (String id, PlayerDAO playerDao) {
+	public void enrollPlayers (String id) {
 		for (int i = 0; i < 3; i++) {
 			String playerName = view.enrollPlayer();
 			int pAbility = rand.nextInt(100) + 1;
@@ -62,14 +64,14 @@ public class PlayerController {
 		}
 	}
 	
-	public void enrollBonusPlayer(PlayerDAO playerDao, String id) {
+	public void enrollBonusPlayer(String id) {
 		String playerName = view.enrollPlayer();
 		int pAbility = rand.nextInt(100) + 1;
 		System.out.println("´É·ÂÄ¡ >> " + pAbility);
 		playerDao.enrollPlayer(playerName, pAbility, id);
 	}
 	
-	public void showHitterList(String id, PlayerDAO playerDao) {
+	public void showHitterList(String id) {
 		view.showHitterList();
 		ArrayList<PlayerDTO> selectH = playerDao.selectAllHitter(id);
 		for (PlayerDTO al : selectH) {
@@ -77,7 +79,7 @@ public class PlayerController {
 		}
 	}
 	
-	public PlayerDTO inputHitters (String id, PlayerDAO playerDao) {
+	public PlayerDTO inputHitters (String id) {
 		String setname = view.inputHitterName();
 		PlayerDTO dto = playerDao.selectOneHitter(setname);
 		return dto;

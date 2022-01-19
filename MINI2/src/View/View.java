@@ -61,6 +61,7 @@ public class View {
 						System.out
 								.println("Player_Name:" + al.getPlayerName() + "\t Abillity:" + al.getPlayerAbility());
 					}
+					
 					int strike = 0;
 					int score = 0;
 					int victory=0;
@@ -86,6 +87,8 @@ public class View {
 						}
 						if (strike >= 3) {
 							System.out.println("패배하였습니다");
+							strike = 0;
+							score = 0;
 							if(score>udao.currentScore(id)) {
 								udao.updateScore(id, score);
 								}
@@ -96,6 +99,8 @@ public class View {
 							}
 						} else if (score >= 10) {
 							System.out.println("승리하였습니다");
+							strike = 0;
+							score = 0;
 							if(score>udao.currentScore(id)) {
 							udao.updateScore(id, score);
 							}

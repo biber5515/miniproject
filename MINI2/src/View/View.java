@@ -72,6 +72,10 @@ public class View {
 						String setname = sc.next();
 						PlayerDTO dto = pdao.selectOneHitter(setname);
 						PlayerDTO pitcher = playerController.getPitcherList(id);
+						if(pitcher == null) {
+							System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
+							break;
+						}
 						int pitcherAbil = pitcher.getPlayerAbility();
 						
 						System.out.println("타자와 투수 입장합니다!!");

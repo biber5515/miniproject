@@ -106,20 +106,12 @@ public class View {
 		System.out.println("투수 능력치:" + pitcherAbil);
 	}
 	
-	public void showSafety (int strike, int score) {
-		System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
-	}
-	
 	public void homerunResult (PlayerDTO dto, int pitcherAbil) {
 		System.out.println("===============================");
 		System.out.println("홈런");
 		System.out.println("===============================");
 		System.out.println("타자 능력치:" + dto.getPlayerAbility());
 		System.out.println("투수 능력치:" + pitcherAbil);
-	}
-	
-	public void showHomerun (int strike, int score) {
-		System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
 	}
 	
 }

@@ -1,12 +1,13 @@
 package controller;
 
 import Model.USER_DAO;
+import Model.USER_VO;
 import View.View;
 
 public class UserController {
 	
-	View view = new View();
-	USER_DAO udao = new USER_DAO();
+	private View view = new View();
+	private USER_DAO udao = new USER_DAO();
 	
 	public void handleJoin () {
 		String id = view.inputId();
@@ -19,5 +20,15 @@ public class UserController {
 		} else {
 			System.out.println("회원가입이 실패했습니다");
 		}
+	}
+
+	public String returnId() {
+		String userId = view.inputId();
+		return userId;
+	}
+	
+	public int returnPwd() {
+		int userPwd = view.inputPwd();
+		return userPwd;
 	}
 }

@@ -41,11 +41,10 @@ public class Main {
 				}
 				//
 			} else if (s == 2) {
-				System.out.print("아이디 입력 : "); // inputName
-				String id = sc.next();
-				System.out.print("비밀번호 입력 : "); // inputPwd
-				int pw = sc.nextInt();
-
+				System.out.print("아이디 입력 : ");
+				String id = sc.next(); // -> String id = UserController.returnId();
+				System.out.print("비밀번호 입력 : ");
+				int pw = sc.nextInt(); // -> String Pwd = UserController.returnPwd();
 				USER_VO check = udao.selectOneID(id);
 				if (check != null) {
 					if (id.equals(check.getID()) && pw == check.getPASSWORD()) {
@@ -61,14 +60,16 @@ public class Main {
 									continue;
 								}
 								System.out.println("능력치 >> " + pAbility);
-							}
+							} // -> PlayerController.enrollPlayers(id);
 						}
+						// ==============================================
 						System.out.println("[타자 목록]");
 						ArrayList<PlayerDTO> selectH = pdao.selectAllHitter(id);
 						for (PlayerDTO al : selectH) {
 							System.out.println(
 									"Player_Name:" + al.getPlayerName() + "\t Abillity:" + al.getPlayerAbility());
 						}
+						// =======> PlayerController.showHitterList(id);
 
 						int strike = 0;
 						int score = 0;

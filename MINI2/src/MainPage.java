@@ -50,7 +50,7 @@ public class MainPage {
 								pco.handleStrike(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) {
 								score++;
-								pco.handleSafety(Hitter, pitcherAbil, strike, totalScore);
+								pco.handleSafety(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) {
 								score += 2;
 								pco.handleHomerun(Hitter, pitcherAbil, strike, score);

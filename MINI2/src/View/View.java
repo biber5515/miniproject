@@ -71,6 +71,49 @@ public class View {
 		System.out.println(
 				"Player_Name:" + al.getPlayerName() + "\t Abillity:" + al.getPlayerAbility());
 	}
+
+	
+	public String inputHitterName () {
+		System.out.print("투입될 타자이름을 입력해주세요:");
+		String setname = sc.next();
+		return setname;
+	}
+	
+	public void cantLoadPitcher () {
+		System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
+	}
+	
+	public void joinHitAndPit () {
+		System.out.println("타자와 투수 입장합니다!!");
+	}
+	
+	public void strikeResult (PlayerDTO dto, int pitcherAbil) {
+		System.out.println("===============================");
+		System.out.println("스트라이크!!!!");
+		System.out.println("===============================");
+		System.out.println("타자 능력치:" + dto.getPlayerAbility());
+		System.out.println("투수 능력치:" + pitcherAbil);
+	}
+	
+	public void showStrike (int strike, int score) {
+		System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
+	}
+	
+	public void safetyResult (PlayerDTO dto, int pitcherAbil) {
+		System.out.println("===============================");
+		System.out.println("안타");
+		System.out.println("===============================");
+		System.out.println("타자 능력치:" + dto.getPlayerAbility());
+		System.out.println("투수 능력치:" + pitcherAbil);
+	}
+	
+	public void homerunResult (PlayerDTO dto, int pitcherAbil) {
+		System.out.println("===============================");
+		System.out.println("홈런");
+		System.out.println("===============================");
+		System.out.println("타자 능력치:" + dto.getPlayerAbility());
+		System.out.println("투수 능력치:" + pitcherAbil);
+	}
 	public void defeatPrint() {
 		System.out.println("패배하였습니다");
 	}
@@ -114,5 +157,6 @@ public class View {
 	public void inputError() {
 		System.out.println("잘못 입력하였습니다");
 	}
+
 }
 

@@ -10,6 +10,7 @@ import Model.USER_DAO;
 import Model.USER_VO;
 import controller.PlayerController;
 
+
 public class View {
 	public static void main(String[] args) {
 
@@ -85,15 +86,27 @@ public class View {
 
 						System.out.println("타자와 투수 입장합니다!!");
 						if (pitcherAbil > dto.getPlayerAbility() || dto.getPlayerAbility() - pitcherAbil <= 10) {
+							System.out.println("===============================");
 							System.out.println("스트라이크!!!!");
+							System.out.println("===============================");
+							System.out.println("타자 능력치:"+dto.getPlayerAbility());
+							System.out.println("투수 능력치:"+pitcherAbil);
 							strike++;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
 						} else if (dto.getPlayerAbility() - pitcherAbil <= 50) {
+							System.out.println("===============================");
 							System.out.println("안타");
+							System.out.println("===============================");
+							System.out.println("타자 능력치:"+dto.getPlayerAbility());
+							System.out.println("투수 능력치:"+pitcherAbil);
 							score++;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
 						} else if (dto.getPlayerAbility() - pitcherAbil > 50) {
+							System.out.println("===============================");
 							System.out.println("홈런");
+							System.out.println("===============================");
+							System.out.println("타자 능력치:"+dto.getPlayerAbility());
+							System.out.println("투수 능력치:"+pitcherAbil);
 							score += 2;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
 						}

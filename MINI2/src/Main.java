@@ -40,9 +40,9 @@ public class Main {
 					System.out.println("회원가입이 실패했습니다");
 				}
 			} else if (s == 2) {
-				System.out.print("아이디 입력 : ");
+				System.out.print("아이디 입력 : "); // inputName
 				String id = sc.next();
-				System.out.print("비밀번호 입력 : ");
+				System.out.print("비밀번호 입력 : "); // inputPwd
 				int pw = sc.nextInt();
 
 				USER_VO check = udao.selectOneID(id);

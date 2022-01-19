@@ -19,6 +19,10 @@ static MP3Player mp3 = new MP3Player();
 		mp3.play("Strike");
 	}
 	
+	public static void Intro() {
+		mp3.play("Intro");
+	}
+	
 	public static void stop() {
 		mp3.stop();
 	}

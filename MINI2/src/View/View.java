@@ -124,13 +124,14 @@ public class View {
 							}
 
 						}
-						if (victory % 2 == 0 && victory != 0) {
+						if (victory == 2) {
 							System.out.println("[선수 등록]");
 							System.out.print("선수 이름 입력 : ");
 							String pName = sc.next();
 							int pAbility = rd.nextInt(100) + 1;
 							System.out.println("능력치 >> " + pAbility);
 							boolean playerin = pdao.enrollPlayer(pName, pAbility, id);
+							victory = 0;
 						}
 					}
 				} else {

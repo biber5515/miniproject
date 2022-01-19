@@ -9,11 +9,8 @@ public class PlayerController {
 	// 모델 - 뷰를 왔다갔다해야함
 	// 여기있는 메서드를 실행
 	// 여기서 실행되는 메서드는 모델에 영향을 줌
-	View view = new View();
-	PlayerDAO playerDao = new PlayerDAO();
-	
-	Scanner sc = new Scanner(System.in);
-	Random rand = new Random();
+	private PlayerDAO playerDao;
+//	private View view;
 
 	public PlayerController(PlayerDAO playerDao) {
 		this.playerDao = playerDao;
@@ -45,26 +42,5 @@ public class PlayerController {
 		int randomNumber = rand.nextInt(pitcherList.size());
 		pickedPlayer = pitcherList.get(randomNumber);
 		return pickedPlayer;
-	}
-	
-	public void enrollPlayers (String id) {
-		for (int i = 0; i < 3; i++) {
-			String playerName = view.enrollPlayer();
-			int pAbility = rand.nextInt(100) + 1;
-			boolean isOverlap = playerDao.enrollPlayer(playerName, pAbility, id);
-			if (!isOverlap) {
-				i = i-1;
-				continue;
-			}
-			view.showAbility(pAbility);
-		}
-	}
-	
-	public void showHitterList(String id) {
-		view.showHitterList();
-		ArrayList<PlayerDTO> selectH = playerDao.selectAllHitter(id);
-		for (PlayerDTO al : selectH) {
-			view.showHitters(al);
-		}
 	}
 }

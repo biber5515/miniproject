@@ -125,7 +125,7 @@ public class View {
 				for (USER_VO vo : al) {
 					System.out.println("ID:" + vo.getID() + "\t Name:" + vo.getNAME() + "\t Score:" + vo.getSCORE());
 				}
-				System.out.print("==========================================");
+				System.out.println("==========================================");
 				System.out.print("ID를 입력하시면 입력한 아이디의 최고점수가 출력됩니다:");
 				String setId = sc.next();
 				USER_VO v = udao.selectRank(setId);

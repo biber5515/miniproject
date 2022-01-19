@@ -110,6 +110,7 @@ public class Main {
 								score += 2;
 								System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
 							}
+							//
 							if (strike >= 3) {
 								System.out.println("패배하였습니다");
 								totalscore += score;

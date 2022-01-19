@@ -39,7 +39,7 @@ public class Main {
 				} else {
 					System.out.println("회원가입이 실패했습니다");
 				}
-				//
+				//컨트롤러화
 			} else if (s == 2) {
 				System.out.print("아이디 입력 : "); // inputName
 				String id = sc.next();
@@ -175,6 +175,7 @@ public class Main {
 					System.out.println("=======================================");
 					System.out.println("ID:" + v.getID() + "\t Name:" + v.getNAME() + "\t Score:" + v.getSCORE());
 				}
+				//컨트롤러화
 			} else if (s == 4) {
 				System.out.println("종료되었습니다");
 				break;

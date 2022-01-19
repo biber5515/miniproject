@@ -35,6 +35,7 @@ public class View {
 				boolean userin = udao.insertId(id, pw, user);
 				if(userin==true) {
 					System.out.println("회원가입이 성공했습니다");
+					udao.updateScore(id, 0);
 				}else {
 					System.out.println("회원가입이 실패했습니다");
 				}
@@ -66,6 +67,7 @@ public class View {
 					
 					int strike = 0;
 					int score = 0;
+					int totalscore=0;
 					int victory=0;
 					while (true) {
 						System.out.print("투입될 타자이름을 입력해주세요:");
@@ -94,31 +96,35 @@ public class View {
 						}
 						if (strike >= 3) {
 							System.out.println("패배하였습니다");
-							strike = 0;
-							score = 0;
+							totalscore+=score;
 							if(score>udao.currentScore(id)) {
-								udao.updateScore(id, score);
+								udao.updateScore(id, totalscore);
 								}
+							strike=0;
+							score=0;
 							System.out.print("계속하시겠습니까?(Y/N)");
 							String continu = sc.next();
 							if (continu.equals("N") || continu.equals("n")) {
 								break;
 							}
+							
 						} else if (score >= 10) {
 							System.out.println("승리하였습니다");
-							strike = 0;
-							score = 0;
+							totalscore+=score;
 							if(score>udao.currentScore(id)) {
-							udao.updateScore(id, score);
+							udao.updateScore(id, totalscore);
 							}
 							System.out.print("계속하시겠습니까?(Y/N)");
 							String continu = sc.next();
 							victory++;
+							strike=0;
+							score=0;
 							if (continu.equals("N") || continu.equals("n")) {
 								break;
 							}
+							
 						}
-						if(victory==2) {
+						if(victory%2==0&&victory!=0) {
 							System.out.println("[선수 등록]");
 							System.out.print("선수 이름 입력 : ");
 							String pName = sc.next();
@@ -144,7 +150,7 @@ public class View {
 				if (v == null) {
 					System.out.println("없는 아이디입니다");
 				} else {
-					System.out.println("=================");
+					System.out.println("=======================================");
 					System.out.println("ID:" + v.getID() + "\t Name:" + v.getNAME() + "\t Score:" + v.getSCORE());
 				}
 			} else if (s == 4) {

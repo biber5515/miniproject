@@ -11,7 +11,11 @@ public class UserController {
 	private View view = new View();
 	private USER_DAO udao = new USER_DAO();
 	
-	public void handleJoin () {
+	public UserController(USER_DAO udao) {
+		this.udao = udao;
+	}
+	
+	public void handleJoin (USER_DAO udao) {
 		String id = view.inputId();
 		int pw = view.inputPwd();
 		String user = view.inputName();
@@ -46,6 +50,12 @@ public class UserController {
 			view.idError();
 		} else {
 			view.chooseList(v);
+		}
+	}
+	
+	public void bestScoreUpdate(int score, int totalscore, String id, USER_DAO udao ) {
+		if (score > udao.currentScore(id)) {
+			udao.updateScore(id, totalscore);
 		}
 	}
 }

@@ -55,7 +55,7 @@ public class View {
 							System.out.print("능력치 >> ");
 							int pAbility = rd.nextInt(100) + 1;
 							System.out.print(pAbility + "\n");
-							boolean playerin = pdao.enrollPlayer(pName, pAbility, id);
+							pdao.enrollPlayer(pName, pAbility, id);
 						}
 					}
 					System.out.println("[타자 목록]");
@@ -130,7 +130,7 @@ public class View {
 							String pName = sc.next();
 							int pAbility = rd.nextInt(100) + 1;
 							System.out.println("능력치 >> " + pAbility);
-							boolean playerin = pdao.enrollPlayer(pName, pAbility, id);
+							pdao.enrollPlayer(pName, pAbility, id);
 							victory = 0;
 						}
 					}

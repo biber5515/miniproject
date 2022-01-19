@@ -38,7 +38,7 @@ public class PlayerController {
 	}
 
 	// 투수 리스트를 뽑아옵니다.
-	public PlayerDTO getPitcherList(String userId) {
+	public PlayerDTO getPitcherList(String userId, PlayerDAO playerDao) {
 		// 모든 투수 리스트를 가져 온 후, 랜덤으로 뽑아야함
 		Random rand = new Random();
 		PlayerDTO pickedPlayer;
@@ -61,7 +61,7 @@ public class PlayerController {
 		}
 	}
 	
-	public void enrollBonusPlayer(String id) {
+	public void enrollBonusPlayer(PlayerDAO PlayerDao,String id) {
 		String playerName = view.enrollPlayer();
 		int pAbility = rand.nextInt(100) + 1;
 		System.out.println("능력치 >> " + pAbility);
@@ -76,7 +76,7 @@ public class PlayerController {
 		}
 	}
 	
-	public PlayerDTO inputHitters (String id) {
+	public PlayerDTO inputHitters (String id,PlayerDAO playerDao) {
 		String setname = view.inputHitterName();
 		PlayerDTO dto = playerDao.selectOneHitter(setname);
 		return dto;

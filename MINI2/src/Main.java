@@ -81,7 +81,7 @@ public class Main {
 							String setname = sc.next();
 							PlayerDTO Hitter = pdao.selectOneHitter(setname);
 							// -> PlayerDTO Hitter = PlayerController.inputHitters(id);
-							PlayerDTO pitcher = playerController.getPitcherList(id);
+							PlayerDTO pitcher = playerController.getPitcherList(id,pdao);
 							if (pitcher == null) {
 								System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
 								break;

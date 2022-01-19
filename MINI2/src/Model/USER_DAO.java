@@ -71,7 +71,7 @@ public class USER_DAO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("중복된 아이디 입니다.");
 		} finally {
 			close();
 		}

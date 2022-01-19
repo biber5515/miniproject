@@ -46,12 +46,11 @@ public class PlayerDAO {
 	public boolean enrollPlayer(String playerName, int playerAbility, String ID) {
 		// 선수 등록
 		// playerAbility는 컨트롤러에서 랜덤값으로 넘겨주셈!
-
 		boolean check = false; // 데이터 처리가 잘 되었는지 확인하는 변수
 		try {
 			connect();
 			// 대괄호로 감싼 부분 나중에 맞는 테이블명으로 수정.
-			String query = "insert into player(PLAYER_NAME,Abillity,ID) values (?, ?,?)";
+			String query = "insert into player(PLAYER_NAME,Abillity,ID) values (?, ?, ?)";
 			pst = conn.prepareStatement(query);
 
 			pst.setString(1, playerName);
@@ -65,7 +64,7 @@ public class PlayerDAO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("중복된 선수 이름입니다. 선수를 다른 입력으로 등록해주세요.");
 		} finally {
 			close();
 		}

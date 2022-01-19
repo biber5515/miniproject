@@ -52,10 +52,13 @@ public class View {
 							System.out.println("[선수 등록]");
 							System.out.print("선수 이름 입력 : ");
 							String pName = sc.next();
-							System.out.print("능력치 >> ");
 							int pAbility = rd.nextInt(100) + 1;
-							System.out.print(pAbility + "\n");
-							pdao.enrollPlayer(pName, pAbility, id);
+							boolean isOverlap = pdao.enrollPlayer(pName, pAbility, id);
+							if(!isOverlap) {
+								i = 0;
+								continue;
+							}
+							System.out.println("능력치 >> " + pAbility);
 						}
 					}
 					System.out.println("[타자 목록]");

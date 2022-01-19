@@ -135,7 +135,7 @@ public class View {
 						}
 					}
 				} else {
-					System.out.println("잘못 입력하였습니다");
+					System.out.println("등록된 ID가 없거나, 잘못 입력하셨습니다.");
 				}
 			} else if (s == 3) {
 				ArrayList<USER_VO> al = udao.rankCheck();

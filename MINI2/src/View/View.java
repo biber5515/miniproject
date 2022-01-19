@@ -8,6 +8,7 @@ import Model.PlayerDAO;
 import Model.PlayerDTO;
 import Model.USER_DAO;
 import Model.USER_VO;
+import controller.PlayerController;
 
 public class View {
 	public static void main(String[] args) {
@@ -16,6 +17,7 @@ public class View {
 		Random rd = new Random();
 		PlayerDAO pdao = new PlayerDAO();
 		USER_DAO udao = new USER_DAO();
+		PlayerController playerController = new PlayerController(pdao);
 
 		while (true) {
 			System.out.println("[BaseBall Game]");
@@ -68,18 +70,19 @@ public class View {
 						System.out.print("투입될 타자이름을 입력해주세요:");
 						String setname = sc.next();
 						PlayerDTO dto = pdao.selectOneHitter(setname);
-
+						PlayerDTO pitcher = playerController.getPitcherList(id);
+						int pitcherAbil = pitcher.getPlayerAbility();
+						
 						System.out.println("타자와 투수 입장합니다!!");
-						int pitcher = rd.nextInt(100) + 1;
-						if (pitcher > dto.getPlayerAbility() || dto.getPlayerAbility() - pitcher <= 10) {
+						if (pitcherAbil > dto.getPlayerAbility() || dto.getPlayerAbility() - pitcherAbil <= 10) {
 							System.out.println("스트라이크!!!!");
 							strike++;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
-						} else if (dto.getPlayerAbility() - pitcher <= 50) {
+						} else if (dto.getPlayerAbility() - pitcherAbil <= 50) {
 							System.out.println("안타");
 							score++;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
-						} else if (dto.getPlayerAbility() - pitcher > 50) {
+						} else if (dto.getPlayerAbility() - pitcherAbil > 50) {
 							System.out.println("홈런");
 							score += 2;
 							System.out.println("스트라이크 횟수:" + strike + " Score:" + score);

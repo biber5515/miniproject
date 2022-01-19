@@ -56,7 +56,7 @@ public class View {
 								int pAbility = rd.nextInt(100) + 1;
 								boolean isOverlap = pdao.enrollPlayer(pName, pAbility, id);
 								if (!isOverlap) {
-									i = 0;
+									i = i-1;
 									continue;
 								}
 								System.out.println("´É·ÂÄ¡ >> " + pAbility);

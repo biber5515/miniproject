@@ -153,6 +153,12 @@ public class View {
 	public void inputError() {
 		System.out.println("잘못 입력하였습니다");
 	}
+	public void noPicher() {
+		System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
+	}
+	public void playerEnter() {
+		System.out.println("타자와 투수 입장합니다!!");
+	}
 
 }
 

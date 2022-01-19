@@ -33,16 +33,17 @@ public class MainPage {
 						int score = 0;
 						int totalScore = 0;
 						int victory = 0;
+						String continu="";
 						while (true) {
 							PlayerDTO Hitter = pco.inputHitters(id, pdao);
 							PlayerDTO pitcher = pco.getPitcherList(id, pdao);
 							if (pitcher == null) {
-								System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
+								view.noPicher();
 								break;
 							}
 							int pitcherAbil = pitcher.getPlayerAbility();
 
-							System.out.println("타자와 투수 입장합니다!!");
+								view.playerEnter();
 							if (pitcherAbil > Hitter.getPlayerAbility()
 									|| Hitter.getPlayerAbility() - pitcherAbil <= 10) {
 								strike++;
@@ -55,16 +56,16 @@ public class MainPage {
 								pco.handleHomerun(Hitter, pitcherAbil, strike, score);
 							}
 							if (strike >= 3) {
-								System.out.println("패배하였습니다");
+								view.defeatPrint();
 								totalScore += score;
 								uco.bestScoreUpdate(score, totalScore, id, udao);
 								strike = 0;
 								score = 0;
-								String continu = view.isContinue();
+								 continu = view.isContinue();
 								if (continu.equals("N") || continu.equals("n")) {
 									break;
 								} else if (score >= 10) {
-									System.out.println("승리하였습니다");
+									view.victoryPrint();
 									totalScore += score;
 									uco.bestScoreUpdate(score, totalScore, id, udao);
 									continu = view.isContinue();

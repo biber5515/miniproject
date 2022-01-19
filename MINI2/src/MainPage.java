@@ -11,37 +11,36 @@ import View.View;
 
 public class MainPage {
 	public static void main(String[] args) {
-		PlayerDAO pdao = new PlayerDAO();
-		USER_DAO udao = new USER_DAO();
-		UserController uco = new UserController(udao);
-		PlayerController pco = new PlayerController(pdao);
-		MusicController mco= new MusicController();
+		PlayerDAO playerDao = new PlayerDAO();
+		USER_DAO userDao = new USER_DAO();
+		UserController userCon = new UserController(userDao);
+		PlayerController playerCon = new PlayerController(playerDao);
+		MusicController musicCon= new MusicController();
 		View view = new View();
 
 		while (true) {
-			int s = uco.Start();
+			int s = userCon.Start();
 			if (s == 1) {
-				uco.handleJoin();
+				userCon.handleJoin();
 			} else if (s == 2) {
-				String id = uco.returnId();
-				int Pwd = uco.returnPwd();
-				USER_VO check = udao.selectOneID(id);
+				String id = userCon.returnId();
+				int Pwd = userCon.returnPwd();
+				USER_VO check = userDao.selectOneID(id);
 				if (check != null) {
 					if (id.equals(check.getID()) && Pwd == check.getPASSWORD()) {
-						if (pdao.checkPlayer(id) == false) {
-							pco.enrollPlayers(id);
+						if (playerDao.checkPlayer(id) == false) {
+							playerCon.enrollPlayers(id);
 						}
-						pco.showHitterList(id);
+						playerCon.showHitterList(id); // 아이디에 등록된 전체 선수 리스트 출력
 						int strike = 0;
 						int score = 0;
 						int totalScore = 0;
 						int victory = 0;
 						String continu="";
-						mco.Intro(); 
+						musicCon.Intro(); 
 						while (true) {
-							
-							PlayerDTO Hitter = pco.inputHitters(id, pdao);
-							PlayerDTO pitcher = pco.getPitcherList(id, pdao);
+							PlayerDTO Hitter = playerCon.inputHitters(id, playerDao);
+							PlayerDTO pitcher = playerCon.getPitcherList(id, playerDao);
 							if (pitcher == null) {
 								view.noPicher();
 								break;
@@ -52,21 +51,21 @@ public class MainPage {
 							if (pitcherAbil > Hitter.getPlayerAbility()
 									|| Hitter.getPlayerAbility() - pitcherAbil <= 10) {
 								strike++;
-								mco.StrikePlay();
-								pco.handleStrike(Hitter, pitcherAbil, strike, score);
+								musicCon.StrikePlay();
+								playerCon.handleStrike(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) {
 								score++;
-								mco.HitPlay();
-								pco.handleSafety(Hitter, pitcherAbil, strike, score);
+								musicCon.HitPlay();
+								playerCon.handleSafety(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) {
 								score += 2;
-								mco.HomeRunPlay();
-								pco.handleHomerun(Hitter, pitcherAbil, strike, score);
+								musicCon.HomeRunPlay();
+								playerCon.handleHomerun(Hitter, pitcherAbil, strike, score);
 							}
 							if (strike >= 3) {
 								view.defeatPrint();
 								totalScore += score;
-								uco.bestScoreUpdate(score, totalScore, id, udao);
+								userCon.bestScoreUpdate(score, totalScore, id, userDao);
 								strike = 0;
 								score = 0;
 								 continu = view.isContinue();
@@ -75,7 +74,7 @@ public class MainPage {
 								} else if (score >= 10) {
 									view.victoryPrint();
 									totalScore += score;
-									uco.bestScoreUpdate(score, totalScore, id, udao);
+									userCon.bestScoreUpdate(score, totalScore, id, userDao);
 									continu = view.isContinue();
 									victory++;
 									strike = 0;
@@ -86,7 +85,7 @@ public class MainPage {
 
 								}
 								if (victory == 2) {
-									pco.enrollBonusPlayer(pdao, id);
+									playerCon.enrollBonusPlayer(playerDao, id);
 									victory = 0;
 								}
 							}
@@ -98,12 +97,12 @@ public class MainPage {
 					view.idError();
 				}
 			} else if (s == 3) {
-				uco.rankCheck();
+				userCon.rankCheck();
 			} else if (s == 4) {
-				uco.finish();
+				userCon.finish();
 				break;
 			} else {
-				uco.inputError();
+				userCon.inputError();
 			}
 
 		}

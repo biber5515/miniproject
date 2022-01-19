@@ -73,7 +73,7 @@ public class View {
 	
 	public void showHitters (PlayerDTO al) {
 		System.out.println(
-				"Player_Name:" + al.getPlayerName() + "\t Abillity:" + al.getPlayerAbility());
+				"선수이름 : " + al.getPlayerName() + "\t 능력치:" + al.getPlayerAbility());
 	}
 
 	

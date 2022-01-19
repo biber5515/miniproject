@@ -12,7 +12,6 @@ public class PlayerController {
 	
 	View view = new View();
 	PlayerDAO playerDao;
-	PlayerController playerController = new PlayerController(playerDao);
 	
 	Scanner sc = new Scanner(System.in);
 	Random rand = new Random();

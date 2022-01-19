@@ -71,4 +71,48 @@ public class View {
 		System.out.println(
 				"Player_Name:" + al.getPlayerName() + "\t Abillity:" + al.getPlayerAbility());
 	}
+	public void defeatPrint() {
+		System.out.println("패배하였습니다");
+	}
+	public void victoryPrint() {
+		System.out.println("승리하였습니다");
+	}
+	public String continu() {
+		System.out.print("계속하시겠습니까?(Y/N)");
+		String continu = sc.next();
+		return continu;
+	}
+	public void passwordError() {
+		System.out.println("비밀번호를 잘못 입력하셨습니다.");
+	}
+	public void idError() {
+		System.out.println("등록된 ID가 없습니다.");
+	}
+	public void showrankList () {
+		System.out.println("최고점수 랭킹 10위");
+	}
+	public void showRank (USER_VO vo) {
+		System.out.println("ID:" + vo.getID() + "\t Name:" + vo.getNAME() + "\t Score:" + vo.getSCORE());
+	}
+	public String chooseRank() {
+		System.out.println("==========================================");
+		System.out.print("ID를 입력하시면 입력한 아이디의 최고점수가 출력됩니다:");
+		String setId = sc.next();
+		return setId;
+	}
+	public void chooseError() {
+		System.out.println("없는 아이디입니다");
+	}
+	
+	public void chooseList(USER_VO v) {
+		System.out.println("=======================================");
+		System.out.println("ID:" + v.getID() + "\t Name:" + v.getNAME() + "\t Score:" + v.getSCORE());
+	}
+	public void finish() {
+		System.out.println("종료되었습니다");
+	}
+	public void inputError() {
+		System.out.println("잘못 입력하였습니다");
+	}
 }
+

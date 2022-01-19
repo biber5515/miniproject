@@ -61,4 +61,13 @@ public class AsciiArt {
 		System.out.println("| '--'  /`-./  /.__)  |  `---.");
 		System.out.println("`------'   `--'       `------'");
 	}
+	
+	public static void printVictory() {
+		System.out.println(" ____   ____  _____   ______  _________    ___   _______   ____  ____");
+		System.out.println("|_  _| |_  _||_   _|.' ___  ||  _   _  | .'   `.|_   __ \\ |_  _||_  _|");
+		System.out.println("  \\ \\   / /    | | / .'   \\_||_/ | | \\_|/  .-.  \\ | |__) |  \\ \\  / /");
+		System.out.println("   \\ \\ / /     | | | |           | |    | |   | | |  __ /    \\ \\/ /");
+		System.out.println("    \\ ' /     _| |_\\ `.___.'\\   _| |_   \\  `-'  /_| |  \\ \\_  _|  |");
+		System.out.println("     \\_/     |_____|`.____ .'  |_____|   `.___.'|____| |___||______|"); 
+	}
 }

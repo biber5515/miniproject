@@ -116,7 +116,7 @@ public class View {
 		AsciiArt.printDefeat();
 	}
 	public void victoryPrint() {
-		System.out.println("승리하였습니다");
+		AsciiArt.printVictory();
 	}
 	public String isContinue() {
 		System.out.print("계속하시겠습니까?(Y/N)");

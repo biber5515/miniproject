@@ -86,6 +86,9 @@ public class View {
 						}
 						if (strike >= 3) {
 							System.out.println("패배하였습니다");
+							if(score>udao.currentScore(id)) {
+								udao.updateScore(id, score);
+								}
 							System.out.print("계속하시겠습니까?(Y/N)");
 							String continu = sc.next();
 							if (continu.equals("N") || continu.equals("n")) {
@@ -93,6 +96,9 @@ public class View {
 							}
 						} else if (score >= 10) {
 							System.out.println("승리하였습니다");
+							if(score>udao.currentScore(id)) {
+							udao.updateScore(id, score);
+							}
 							System.out.print("계속하시겠습니까?(Y/N)");
 							String continu = sc.next();
 							victory++;

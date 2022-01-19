@@ -102,8 +102,6 @@ public class PlayerDAO {
 	}
 //플레이어 이미 등록이 되어있으면 다시 등록을 하지 않기위해 확인하기위한 쿼리
 	public boolean checkPlayer(String ID) {
-		// 선택할 타자 이름을 입력받음.
-		PlayerDTO selected = null;
 		boolean check=false;
 		try {
 			connect();

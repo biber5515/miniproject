@@ -4,6 +4,18 @@ public class AsciiArt {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		// 메인
+		System.out.println(" _______  _______ _______ _______     _______  _______ ___     ___         _______ _______ ___ ___ _______ ");
+		System.out.println("|   _   \\|   _   |   _   |   _   |   |   _   \\|   _   |   |   |   |       |   _   |   _   |   Y   |   _   |");
+		System.out.println("|.  1   /|.  1   |   1___|.  1___|   |.  1   /|.  1   |.  |   |.  |       |.  |___|.  1   |.      |.  1___|");
+		System.out.println("|.  _   \\|.  _   |____   |.  __)_    |.  _   \\|.  _   |.  |___|.  |___    |.  |   |.  _   |. \\_/  |.  __)_ ");
+		System.out.println("|:  1    |:  |   |:  1   |:  1   |   |:  1    |:  |   |:  1   |:  1   |   |:  1   |:  |   |:  |   |:  1   |");
+		System.out.println("|::.. .  |::.|:. |::.. . |::.. . |   |::.. .  |::.|:. |::.. . |::.. . |   |::.. . |::.|:. |::.|:. |::.. . |");
+		System.out.println(" `-------'`--- ---`-------`-------'   `-------'`--- ---`-------`-------'   `-------`--- ---`--- ---`-------'");
+		                                            
+		System.out.println();
+		System.out.println();
+		
 		// 스트라이크
 		System.out.println("   ___    _____    ___     ___    _  __    ___   ");
 		System.out.println("  / __|  |_   _|  | _ \\   |_ _|  | |/ /   | __|  ");

@@ -203,8 +203,5 @@ public class Main {
 				System.out.println("잘못 입력하였습니다");
 			}
 		}
-
 	}
-
-
 }

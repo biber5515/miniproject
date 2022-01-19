@@ -73,12 +73,14 @@ public class Main {
 
 						int strike = 0;
 						int score = 0;
-						int totalscore = 0;
+						int totalScore = 0;
 						int victory = 0;
 						while (true) {
+							//
 							System.out.print("투입될 타자이름을 입력해주세요:");
 							String setname = sc.next();
-							PlayerDTO dto = pdao.selectOneHitter(setname);
+							PlayerDTO Hitter = pdao.selectOneHitter(setname);
+							// -> PlayerDTO Hitter = PlayerController.inputHitters(id);
 							PlayerDTO pitcher = playerController.getPitcherList(id);
 							if (pitcher == null) {
 								System.out.println("불러올 투수가 없습니다. 다른 계정을 만들어서 선수를 등록해주세요.");
@@ -87,54 +89,69 @@ public class Main {
 							int pitcherAbil = pitcher.getPlayerAbility();
 
 							System.out.println("타자와 투수 입장합니다!!");
-							if (pitcherAbil > dto.getPlayerAbility() || dto.getPlayerAbility() - pitcherAbil <= 10) {
+							if (pitcherAbil > Hitter.getPlayerAbility() || Hitter.getPlayerAbility() - pitcherAbil <= 10) {
+								strike++;
+								// ======================
 								System.out.println("===============================");
 								System.out.println("스트라이크!!!!");
 								System.out.println("===============================");
-								System.out.println("타자 능력치:" + dto.getPlayerAbility());
+								System.out.println("타자 능력치:" + Hitter.getPlayerAbility());
 								System.out.println("투수 능력치:" + pitcherAbil);
-								strike++;
 								System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
-							} else if (dto.getPlayerAbility() - pitcherAbil <= 50) {
+								// =========> handleStrike(Hitter, pitcherAbil, strike, score);
+							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) {
+								score++;
+								//
 								System.out.println("===============================");
 								System.out.println("안타");
 								System.out.println("===============================");
-								System.out.println("타자 능력치:" + dto.getPlayerAbility());
+								System.out.println("타자 능력치:" + Hitter.getPlayerAbility());
 								System.out.println("투수 능력치:" + pitcherAbil);
-								score++;
 								System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
-							} else if (dto.getPlayerAbility() - pitcherAbil > 50) {
+								// =========> handleSafety(Hitter, pitcherAbil, strike, score);
+							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) {
+								score += 2;
+								//
 								System.out.println("===============================");
 								System.out.println("홈런");
 								System.out.println("===============================");
-								System.out.println("타자 능력치:" + dto.getPlayerAbility());
+								System.out.println("타자 능력치:" + Hitter.getPlayerAbility());
 								System.out.println("투수 능력치:" + pitcherAbil);
-								score += 2;
 								System.out.println("스트라이크 횟수:" + strike + " Score:" + score);
+								// =========> handleHomerun(Hitter, pitcherAbil, strike, score);
 							}
 							//
 							if (strike >= 3) {
 								System.out.println("패배하였습니다");
-								totalscore += score;
+								totalScore += score;
+								//
 								if (score > udao.currentScore(id)) {
-									udao.updateScore(id, totalscore);
+									udao.updateScore(id, totalScore);
 								}
+								// --> UserController.bestScoreUpdate(score, totalScore, id, udao);
 								strike = 0;
 								score = 0;
+								//
 								System.out.print("계속하시겠습니까?(Y/N)");
 								String continu = sc.next();
+								// --> String continue = View.isContinue();
+								
 								if (continu.equals("N") || continu.equals("n")) {
 									break;
 								}
 
 							} else if (score >= 10) {
 								System.out.println("승리하였습니다");
-								totalscore += score;
+								totalScore += score;
+								//
 								if (score > udao.currentScore(id)) {
-									udao.updateScore(id, totalscore);
+									udao.updateScore(id, totalScore);
 								}
+								// -> UserController.bestScoreUpdate(score, totalScore, id, udao);
+								//
 								System.out.print("계속하시겠습니까?(Y/N)");
 								String continu = sc.next();
+								// String continue = View.isContinue();
 								victory++;
 								strike = 0;
 								score = 0;
@@ -144,20 +161,22 @@ public class Main {
 
 							}
 							if (victory == 2) {
+								//
 								System.out.println("[선수 등록]");
 								System.out.print("선수 이름 입력 : ");
 								String pName = sc.next();
 								int pAbility = rd.nextInt(100) + 1;
 								System.out.println("능력치 >> " + pAbility);
 								pdao.enrollPlayer(pName, pAbility, id);
+								// ====> PlayerController.enrollBonusPlayer(playerDao, id);
 								victory = 0;
 							}
 						}
 					} else {
-						System.out.println("비밀번호를 잘못 입력하셨습니다.");
+						System.out.println("비밀번호를 잘못 입력하셨습니다."); // -> View.passwordError();
 					}
 				} else {
-					System.out.println("등록된 ID가 없습니다.");
+					System.out.println("등록된 ID가 없습니다."); // -> View.idError();
 				}
 			} else if (s == 3) {
 				ArrayList<USER_VO> al = udao.rankCheck();

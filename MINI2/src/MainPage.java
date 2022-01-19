@@ -1,6 +1,7 @@
 
 import controller.PlayerController;
 import controller.UserController;
+import controller.MusicController;
 import Model.PlayerDAO;
 import Model.PlayerDTO;
 import Model.USER_DAO;
@@ -13,6 +14,7 @@ public class MainPage {
 		USER_DAO udao = new USER_DAO();
 		UserController uco = new UserController(udao);
 		PlayerController pco = new PlayerController(pdao);
+		MusicController mco= new MusicController();
 		View view = new View();
 
 		while (true) {
@@ -35,6 +37,7 @@ public class MainPage {
 						int victory = 0;
 						String continu="";
 						while (true) {
+//							mco.Intro(); 음악을 아직 않넣음
 							PlayerDTO Hitter = pco.inputHitters(id, pdao);
 							PlayerDTO pitcher = pco.getPitcherList(id, pdao);
 							if (pitcher == null) {
@@ -47,12 +50,15 @@ public class MainPage {
 							if (pitcherAbil > Hitter.getPlayerAbility()
 									|| Hitter.getPlayerAbility() - pitcherAbil <= 10) {
 								strike++;
+//								mco.StrikePlay();음악을 아직 안넣음
 								pco.handleStrike(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) {
 								score++;
+//								mco.HitPlay();음악을 아직 안넣음
 								pco.handleSafety(Hitter, pitcherAbil, strike, score);
 							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) {
 								score += 2;
+//								mco.HomeRunPlay();음악을 아직 안넣음
 								pco.handleHomerun(Hitter, pitcherAbil, strike, score);
 							}
 							if (strike >= 3) {

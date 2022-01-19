@@ -16,6 +16,8 @@ public class MainPage {
 			if(s==1) {
 			uco.handleJoin();
 			}else if(s==2) {
+			String id = uco.returnId();
+			int Pwd = uco.returnPwd();
 				
 			}else if(s==3) {
 				uco.rankCheck();

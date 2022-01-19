@@ -7,12 +7,11 @@ import Model.USER_VO;
 import View.View;
 
 public class MainPage {
-
 	public static void main(String[] args) {
-		UserController uco = new UserController();
-		PlayerController pco = new PlayerController();
 		PlayerDAO pdao = new PlayerDAO();
 		USER_DAO udao = new USER_DAO();
+		UserController uco = new UserController(udao);
+		PlayerController pco = new PlayerController(pdao);
 
 		while (true) {
 			int s = uco.Start();
@@ -22,6 +21,7 @@ public class MainPage {
 				String id = uco.returnId();
 				int Pwd = uco.returnPwd();
 				USER_VO check = udao.selectOneID(id);
+				System.out.println(check);
 				if (check != null) {
 					if (id.equals(check.getID()) && Pwd == check.getPASSWORD()) {
 						if (pdao.checkPlayer(id) == false) {

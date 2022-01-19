@@ -15,9 +15,6 @@ public class PlayerController {
 	
 	Scanner sc = new Scanner(System.in);
 	Random rand = new Random();
-	public PlayerController() {
-		
-	}
 
 	public PlayerController(PlayerDAO playerDao) {
 		this.playerDao = playerDao;

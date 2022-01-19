@@ -9,11 +9,8 @@ import View.View;
 public class UserController {
 	
 	private View view = new View();
-	private USER_DAO udao = new USER_DAO();
+	private USER_DAO udao;
 	
-	public UserController() {
-		
-	}
 	public UserController(USER_DAO udao) {
 		this.udao = udao;
 	}

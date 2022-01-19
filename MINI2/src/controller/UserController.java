@@ -11,11 +11,14 @@ public class UserController {
 	private View view = new View();
 	private USER_DAO udao = new USER_DAO();
 	
+	public UserController() {
+		
+	}
 	public UserController(USER_DAO udao) {
 		this.udao = udao;
 	}
 	
-	public void handleJoin (USER_DAO udao) {
+	public void handleJoin () {
 		String id = view.inputId();
 		int pw = view.inputPwd();
 		String user = view.inputName();

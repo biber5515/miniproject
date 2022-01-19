@@ -10,11 +10,10 @@ public class PlayerController {
 	// 여기있는 메서드를 실행
 	// 여기서 실행되는 메서드는 모델에 영향을 줌
 	private PlayerDAO playerDao;
-	private View view;
+//	private View view;
 
-	public PlayerController(PlayerDAO playerDao, View view) {
+	public PlayerController(PlayerDAO playerDao) {
 		this.playerDao = playerDao;
-		this.view = view;
 	}
 
 	// 등록이 정상적으로 완료되면 true를 리턴받을것임.

@@ -41,7 +41,7 @@ public class MainPage {
 						musicCon.Intro();
 						while (true) {
 							PlayerDTO Hitter = playerCon.inputHitters(id, playerDao);
-							if(Hitter.getPlayerName().equals(prePlayer)) {
+							if (Hitter.getPlayerName().equals(prePlayer)) {
 								view.needRestPlayer();
 								continue;
 							}
@@ -60,43 +60,49 @@ public class MainPage {
 									strike++;
 									musicCon.StrikePlay();
 									playerCon.handleStrike(Hitter, pitcherAbil, strike, score);
+									playerCon.showHitterList(id);
 								} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) { // 안타
 									score++;
 									musicCon.HitPlay();
 									playerCon.handleSafety(Hitter, pitcherAbil, strike, score);
+									playerCon.showHitterList(id);
 								} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) { // 홈런
 									score += 2;
 									musicCon.HomeRunPlay();
 									playerCon.handleHomerun(Hitter, pitcherAbil, strike, score);
+									playerCon.showHitterList(id);
 								}
 								if (strike == 3) { // 스트라이크 3번 => 패배
 									view.defeatPrint();
 									totalScore += score;
+									view.showTotalscore(totalScore);
 									userCon.bestScoreUpdate(score, totalScore, id, userDao);
 									strike = 0;
 									score = 0;
 									continu = view.isContinue();
 									if (continu.equals("N") || continu.equals("n")) {
 										break;
-									} else if (score >= 10) {
-										view.victoryPrint();
-										totalScore += score;
-										userCon.bestScoreUpdate(score, totalScore, id, userDao);
-										continu = view.isContinue();
-										victory++;
-										strike = 0;
-										score = 0;
-										if (continu.equals("N") || continu.equals("n")) {
-											break;
-										}
+									}
+								} else if (score >= 10) {
+									view.victoryPrint();
+									totalScore += score;
+									view.showTotalscore(totalScore);
+									userCon.bestScoreUpdate(score, totalScore, id, userDao);
+									continu = view.isContinue();
+									victory++;
+									strike = 0;
+									score = 0;
+									if (continu.equals("N") || continu.equals("n")) {
+										break;
+									}
 
-									}
-									if (victory == 2) {
-										playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
-										victory = 0;
-									}
 								}
-							}else {
+								if (victory == 2) {
+									playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
+									victory = 0;
+								}
+
+							} else {
 								view.hitterInputError();
 							}
 						}

@@ -41,6 +41,7 @@ public class MainPage {
 						musicCon.Intro();
 						while (true) {
 							PlayerDTO Hitter = playerCon.inputHitters(id, playerDao);
+							if (Hitter != null) {
 							if (Hitter.getPlayerName().equals(prePlayer)) {
 								view.needRestPlayer();
 								continue;
@@ -51,7 +52,7 @@ public class MainPage {
 								view.noPicher(); // 현재 등록된 다른 선수가 없으면 투수가 없다는 메시지 출력
 								break;
 							}
-							if (Hitter != null) {
+							
 								int pitcherAbil = pitcher.getPlayerAbility();
 
 								view.playerEnter();
@@ -79,6 +80,7 @@ public class MainPage {
 									userCon.bestScoreUpdate(score, totalScore, id, userDao);
 									strike = 0;
 									score = 0;
+									totalScore=0;
 									continu = view.isContinue();
 									if (continu.equals("N") || continu.equals("n")) {
 										break;
@@ -93,6 +95,7 @@ public class MainPage {
 									strike = 0;
 									score = 0;
 									if (continu.equals("N") || continu.equals("n")) {
+										totalScore=0;
 										break;
 									}
 

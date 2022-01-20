@@ -38,7 +38,7 @@ public class MainPage {
 						int victory = 0;
 						String continu = "";
 						String prePlayer = "";
-						//musicCon.Intro();
+						musicCon.Intro();
 						while (true) {
 							PlayerDTO Hitter = playerCon.inputHitters(id, playerDao);
 							if(Hitter.getPlayerName().equals(prePlayer)) {
@@ -58,15 +58,15 @@ public class MainPage {
 								if (pitcherAbil > Hitter.getPlayerAbility()
 										|| Hitter.getPlayerAbility() - pitcherAbil <= 10) { // 스트라이크
 									strike++;
-									//musicCon.StrikePlay();
+									musicCon.StrikePlay();
 									playerCon.handleStrike(Hitter, pitcherAbil, strike, score);
 								} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) { // 안타
 									score++;
-									//musicCon.HitPlay();
+									musicCon.HitPlay();
 									playerCon.handleSafety(Hitter, pitcherAbil, strike, score);
 								} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) { // 홈런
 									score += 2;
-									//musicCon.HomeRunPlay();
+									musicCon.HomeRunPlay();
 									playerCon.handleHomerun(Hitter, pitcherAbil, strike, score);
 								}
 								if (strike == 3) { // 스트라이크 3번 => 패배

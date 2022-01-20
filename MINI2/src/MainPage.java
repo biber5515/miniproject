@@ -83,6 +83,7 @@ public class MainPage {
 									totalScore=0;
 									continu = view.isContinue();
 									if (continu.equals("N") || continu.equals("n")) {
+										victory=0;
 										break;
 									}
 								} else if (score >= 10) {
@@ -96,6 +97,7 @@ public class MainPage {
 									score = 0;
 									if (continu.equals("N") || continu.equals("n")) {
 										totalScore=0;
+										victory=0;
 										break;
 									}
 

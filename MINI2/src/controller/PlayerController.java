@@ -76,6 +76,7 @@ public class PlayerController {
 		}
 	}
 	
+	// 선수 투입
 	public PlayerDTO inputHitters (String id,PlayerDAO playerDao) {
 		String setname = view.inputHitterName();
 		PlayerDTO dto = playerDao.selectOneHitter(setname,id);

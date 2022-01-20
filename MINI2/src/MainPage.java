@@ -15,7 +15,7 @@ public class MainPage {
 		USER_DAO userDao = new USER_DAO();
 		UserController userCon = new UserController(userDao);
 		PlayerController playerCon = new PlayerController(playerDao);
-		MusicController musicCon= new MusicController();
+		MusicController musicCon = new MusicController();
 		View view = new View();
 
 		while (true) {
@@ -36,8 +36,8 @@ public class MainPage {
 						int score = 0;
 						int totalScore = 0;
 						int victory = 0;
-						String continu="";
-						musicCon.Intro(); 
+						String continu = "";
+						musicCon.Intro();
 						while (true) {
 							PlayerDTO Hitter = playerCon.inputHitters(id, playerDao);
 							PlayerDTO pitcher = playerCon.getPitcherList(id, playerDao);
@@ -45,55 +45,59 @@ public class MainPage {
 								view.noPicher(); // 현재 등록된 다른 선수가 없으면 투수가 없다는 메시지 출력
 								break;
 							}
-							int pitcherAbil = pitcher.getPlayerAbility();
+							if (Hitter != null) {
+								int pitcherAbil = pitcher.getPlayerAbility();
 
 								view.playerEnter();
-							if (pitcherAbil > Hitter.getPlayerAbility()
-									|| Hitter.getPlayerAbility() - pitcherAbil <= 10) { // 스트라이크
-								strike++;
-								musicCon.StrikePlay();
-								playerCon.handleStrike(Hitter, pitcherAbil, strike, score);
-							} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) { // 안타
-								score++;
-								musicCon.HitPlay();
-								playerCon.handleSafety(Hitter, pitcherAbil, strike, score);
-							} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) { // 홈런
-								score += 2;
-								musicCon.HomeRunPlay();
-								playerCon.handleHomerun(Hitter, pitcherAbil, strike, score);
-							}
-							if (strike == 3) { // 스트라이크 3번 => 패배
-								view.defeatPrint();
-								totalScore += score;
-								userCon.bestScoreUpdate(score, totalScore, id, userDao);
-								strike = 0;
-								score = 0;
-								 continu = view.isContinue();
-								if (continu.equals("N") || continu.equals("n")) {
-									break;
-								} else if (score >= 10) {
-									view.victoryPrint();
+								if (pitcherAbil > Hitter.getPlayerAbility()
+										|| Hitter.getPlayerAbility() - pitcherAbil <= 10) { // 스트라이크
+									strike++;
+									musicCon.StrikePlay();
+									playerCon.handleStrike(Hitter, pitcherAbil, strike, score);
+								} else if (Hitter.getPlayerAbility() - pitcherAbil <= 50) { // 안타
+									score++;
+									musicCon.HitPlay();
+									playerCon.handleSafety(Hitter, pitcherAbil, strike, score);
+								} else if (Hitter.getPlayerAbility() - pitcherAbil > 50) { // 홈런
+									score += 2;
+									musicCon.HomeRunPlay();
+									playerCon.handleHomerun(Hitter, pitcherAbil, strike, score);
+								}
+								if (strike == 3) { // 스트라이크 3번 => 패배
+									view.defeatPrint();
 									totalScore += score;
 									userCon.bestScoreUpdate(score, totalScore, id, userDao);
-									continu = view.isContinue();
-									victory++;
 									strike = 0;
 									score = 0;
+									continu = view.isContinue();
 									if (continu.equals("N") || continu.equals("n")) {
 										break;
-									}
+									} else if (score >= 10) {
+										view.victoryPrint();
+										totalScore += score;
+										userCon.bestScoreUpdate(score, totalScore, id, userDao);
+										continu = view.isContinue();
+										victory++;
+										strike = 0;
+										score = 0;
+										if (continu.equals("N") || continu.equals("n")) {
+											break;
+										}
 
+									}
+									if (victory == 2) {
+										playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
+										victory = 0;
+									}
 								}
-								if (victory == 2) {
-									playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
-									victory = 0;
-								}
+							}else {
+								view.hitterInputError();
 							}
-						}					
-					}else {
+						}
+					} else {
 						view.passwordError();
 					}
-				}else {
+				} else {
 					view.idError();
 				}
 			} else if (s == 3) {

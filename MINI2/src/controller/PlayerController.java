@@ -33,8 +33,8 @@ public class PlayerController {
 	}
 
 	// 선택한 타자리스트를 가져옵니다.
-	public PlayerDTO getOneHitterList(String playerName, PlayerDAO playerDAO) {
-		return playerDao.selectOneHitter(playerName);
+	public PlayerDTO getOneHitterList(String playerName,String id,PlayerDAO playerDAO) {
+		return playerDao.selectOneHitter(playerName,id);
 	}
 
 	// 투수 리스트를 뽑아옵니다.
@@ -78,7 +78,7 @@ public class PlayerController {
 	
 	public PlayerDTO inputHitters (String id,PlayerDAO playerDao) {
 		String setname = view.inputHitterName();
-		PlayerDTO dto = playerDao.selectOneHitter(setname);
+		PlayerDTO dto = playerDao.selectOneHitter(setname,id);
 		return dto;
 	}
 	

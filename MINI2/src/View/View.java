@@ -126,6 +126,9 @@ public class View {
 	public void passwordError() {
 		System.out.println("비밀번호를 잘못 입력하셨습니다.");
 	}
+	public void hitterInputError() {
+		System.out.println("타자입력을 잘못하였습니다");
+	}
 	public void idError() {
 		System.out.println("등록된 ID가 없습니다.");
 	}

@@ -126,17 +126,18 @@ public class PlayerDAO {
 		return check;
 	}
 	
-	public PlayerDTO selectOneHitter(String hitterName) {
+	public PlayerDTO selectOneHitter(String hitterName, String Id) {
 		// 선택할 타자 이름을 입력받음.
 		PlayerDTO selected = null;
 
 		try {
 			connect();
 
-			String query = "select PLAYER_NAME,Abillity from PLAYER where PLAYER_NAME=?";
+			String query = "select PLAYER_NAME,Abillity from PLAYER where PLAYER_NAME=? and ID=?";
 
 			pst = conn.prepareStatement(query);
 			pst.setString(1, hitterName);
+			pst.setString(2, Id);
 
 			rs = pst.executeQuery();
 

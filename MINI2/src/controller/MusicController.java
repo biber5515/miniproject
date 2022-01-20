@@ -16,17 +16,17 @@ public class MusicController {
 
 	
 	public static void Intro() {
-		mp3.play("C:\\Users\\smhrd\\git\\miniproject\\MINI2\\src\\intro.mp3");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\intro.mp3");
 	}
 
 	public static void StrikePlay() {
-		mp3.play("C:\\Users\\smhrd\\git\\miniproject\\MINI2\\src\\Strike.mp3");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Strike.mp3");
 	}
 	public static void HitPlay() {
-		mp3.play("C:\\Users\\smhrd\\git\\miniproject\\MINI2\\src\\Hit.mp3");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Hit.mp3");
 	}
 	public static void HomeRunPlay() {
-		mp3.play("C:\\Users\\smhrd\\git\\miniproject\\MINI2\\src\\Homerun.mp3");
+		mp3.play("C:\\Users\\smhrd\\Desktop\\미니프로젝트\\Homerun.mp3");
 
 	}
 	public static void stop() {

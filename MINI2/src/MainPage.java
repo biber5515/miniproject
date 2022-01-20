@@ -66,31 +66,34 @@ public class MainPage {
 								if (strike == 3) { // 스트라이크 3번 => 패배
 									view.defeatPrint();
 									totalScore += score;
+									view.showTotalscore(totalScore);
 									userCon.bestScoreUpdate(score, totalScore, id, userDao);
 									strike = 0;
 									score = 0;
 									continu = view.isContinue();
 									if (continu.equals("N") || continu.equals("n")) {
 										break;
-									} else if (score >= 10) {
-										view.victoryPrint();
-										totalScore += score;
-										userCon.bestScoreUpdate(score, totalScore, id, userDao);
-										continu = view.isContinue();
-										victory++;
-										strike = 0;
-										score = 0;
-										if (continu.equals("N") || continu.equals("n")) {
-											break;
-										}
+									}
+								} else if (score >= 10) {
+									view.victoryPrint();
+									totalScore += score;
+									view.showTotalscore(totalScore);
+									userCon.bestScoreUpdate(score, totalScore, id, userDao);
+									continu = view.isContinue();
+									victory++;
+									strike = 0;
+									score = 0;
+									if (continu.equals("N") || continu.equals("n")) {
+										break;
+									}
 
-									}
-									if (victory == 2) {
-										playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
-										victory = 0;
-									}
 								}
-							}else {
+								if (victory == 2) {
+									playerCon.enrollBonusPlayer(playerDao, id); // 2연승하면 선수 한명을 추가로 등록 할 수 있다.
+									victory = 0;
+								}
+
+							} else {
 								view.hitterInputError();
 							}
 						}

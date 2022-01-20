@@ -164,6 +164,9 @@ public class View {
 	public void playerEnter() {
 		System.out.println("타자와 투수 입장합니다!!");
 	}
+	public void showTotalscore(int totalscore) {
+		System.out.println("total score:"+totalscore);
+	}
 
 }
 
